@@ -9,18 +9,18 @@ function Sidebar() {
   const { data: session } = useSession();
 
   const [chats, loading, error] = useCollection(
-    session && query(collection(db, "users", session.user?.email!, "chats")
-    ,orderBy('createdAt', 'asc'))
+    session &&
+      query(
+        collection(db, "users", session.user?.email!, "chats"),
+        orderBy("createdAt", "asc")
+      )
   );
   return (
-    <div className="p-2 flex flex-col h-screen">          
+    <div className="p-2 flex flex-col h-screen">
       <div className="flex-1">
         <div>
-          {/* New chat */}
           <NewChat />
         </div>
-        <div>{/* model seleciton */}</div>
-        {/* map through the chat rows */}
         {chats?.docs.map((chat) => (
           <ChatRow key={chat.id} id={chat.id} />
         ))}

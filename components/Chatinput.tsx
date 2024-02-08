@@ -5,6 +5,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
+import askQuestion from "../app/api/askQuestion";
 
 type Props = {
   chatId: string;
@@ -41,22 +42,38 @@ function Chatinput({ chatId }: Props) {
       message
     );
     const notification = toast.loading("ChatGPT is thinking...");
-    await fetch("/api/askQuestion", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: input,
-        chatId,
-        model,
-        session,
-      }),
-    }).then(() => {
-        toast.success('ChatGPT has responded!',{
-            id: notification
-        })
-    });
+    try {
+      console.log("yes");
+      // await fetch("https://api.github.com/users/xiaotian/repos", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     prompt: input,
+      //     chatId,
+      //     model,
+      //     session,
+      //   }),
+      // })
+      await fetch("https://fakestoreapi.com/products", {
+        method: "POST",
+        body: JSON.stringify({
+          title: "test product",
+          price: 13.5,
+          description: "lorem ipsum set",
+          image: "https://i.pravatar.cc",
+          category: "electronic",
+        }),
+      }).then((res) => {
+        console.log(res);
+        toast.success("ChatGPT has responded!", {
+          id: notification,
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="bg-gray-700/50 text-gray-400 rounded-lg text-sm">

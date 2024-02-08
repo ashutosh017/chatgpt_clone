@@ -18,7 +18,6 @@ export default async function handler(
   if (!chatId) {
     res.status(400).json({ answer: "Please provide a valid chat ID!" });
   }
-  // ChatGPT query
   const response = await query(prompt, chatId, model);
   const message: Message = {
     text: response || "ChatGPT was unable to find an answer for that!",

@@ -6,7 +6,6 @@ export default function Home() {
       <div className="flex space-x-2 text-center">
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
-            {/* sun icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -36,7 +35,6 @@ export default function Home() {
 
         <div>
           <div className="flex flex-col items-center justify-center mb-5">
-            {/* bolt icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -69,7 +67,6 @@ export default function Home() {
         <div>
           <div>
             <div className="flex flex-col items-center justify-center mb-5">
-              {/* exclaimationTriangle icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
